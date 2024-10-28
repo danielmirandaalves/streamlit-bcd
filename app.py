@@ -1,9 +1,13 @@
 import streamlit as st
 import pandas as pd
 
-# Carregar o dataset
-df_validated = pd.read_csv('dataset_enhanced_analysis.csv')
+# Carregar as três partes do dataset e juntá-las
+df_part1 = pd.read_csv('dataset_part_1.csv')
+df_part2 = pd.read_csv('dataset_part_2.csv')
+df_part3 = pd.read_csv('dataset_part_3.csv')
 
+# Concatenar as três partes em um único DataFrame
+df_validated = pd.concat([df_part1, df_part2, df_part3], ignore_index=True)
 # Converter 'entry_month' para datetime se necessário
 df_validated['entry_month'] = pd.to_datetime(df_validated['entry_month'], errors='coerce')
 
